@@ -260,8 +260,7 @@ def game_cycle():
         score()
 
         if pygame.sprite.spritecollide(player, enemies, False):
-            # game_over()
-            pass
+            game_over()
         pygame.display.update()
         timer.tick(60)
         pygame.display.flip()
