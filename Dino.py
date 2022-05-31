@@ -121,7 +121,7 @@ class Cactus(pygame.sprite.Sprite):
         return choice(self.cactus_type)
 
     def load_cactus(self):
-        return pygame.image.load(f"dino/cactus/{self.change_cactus()}.png")
+        return pygame.image.load(f"cactus/{self.change_cactus()}.png")
 
     def draw(self, screen):
         screen.blit(self.image, (self.rect.x, self.rect.y))
@@ -140,8 +140,8 @@ class Pter(pygame.sprite.Sprite):
         self.rect.x = X_max
 
     def load_images(self):
-        self.pter_fly.append(pygame.image.load("pter/Bird1.png"))
-        self.pter_fly.append(pygame.image.load("pter/Bird2.png"))
+        self.pter_fly.append(pygame.image.load("bird/Bird1.png"))
+        self.pter_fly.append(pygame.image.load("bird/Bird2.png"))
 
     def update(self):
         self.rect.x -= game_speed
@@ -185,7 +185,7 @@ class Cloud(pygame.sprite.Sprite):
 
 def road():
     global X_road
-    road = pygame.image.load("../chromeDinoAI/sprites/road.png")
+    road = pygame.image.load("road.png")
     X_road -= game_speed
     screen.blit(road, (X_road, Y_max - 100))
     screen.blit(road, (X_road + road.get_width(), Y_max - 100))
@@ -256,11 +256,10 @@ def game_cycle():
         cloud.draw(screen)
 
         road()
-
         score()
 
         if pygame.sprite.spritecollide(player, enemies, False):
-            game_over()
+             game_over()
         pygame.display.update()
         timer.tick(60)
         pygame.display.flip()
